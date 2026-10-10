@@ -24,6 +24,10 @@ Datas, pontuação e sequências ficam em `src/domain/` e são testadas com Vite
 
 Um app web não grava no Drive sozinho em segundo plano. Ao abrir o app (no máximo uma vez por dia), ele envia o backup para um script do usuário, que grava na pasta "Degrau backups" e mantém os últimos 60. O endereço do script e a chave ficam só no aparelho, nunca no código, porque o repositório é público. Restauração por arquivo `.json` na tela de configurações.
 
+## 7. Cronômetro único "Trabalhar" (10/10/2026)
+
+O tempo de trabalho soma todos os projetos (Workana e produto próprio), então o item deixou de ter nome de plataforma. Primeira migração do banco (versão 2): troca o id do item e move os registros. A mesma conversão roda ao restaurar backup antigo. Testada com banco em memória (fake-indexeddb).
+
 ## 6. Cronômetro por instante de início (10/10/2026)
 
 O cronômetro guarda o instante em que começou e o tempo já acumulado. Assim continua certo com a tela bloqueada ou o app fechado. O tempo pertence ao dia em que o cronômetro foi iniciado.

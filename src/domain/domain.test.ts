@@ -90,10 +90,10 @@ describe('pontuação', () => {
   });
   it('cronômetro conta o trecho em andamento e cumpre a meta com 360 minutos', () => {
     const now = 10_000_000;
-    const e: Entry = { id: '', date: '', habitId: 'workana', timerMs: 350 * 60_000, timerStart: now - 10 * 60_000, updatedAt: 0 };
+    const e: Entry = { id: '', date: '', habitId: 'trabalhar', timerMs: 350 * 60_000, timerStart: now - 10 * 60_000, updatedAt: 0 };
     expect(timerMinutes(e, now)).toBe(360);
-    expect(entryScore(H('workana'), e, now)).toEqual({ done: 1, possible: 1 });
-    expect(entryScore(H('workana'), { ...e, timerStart: null }, now)).toEqual({ done: 0, possible: 1 });
+    expect(entryScore(H('trabalhar'), e, now)).toEqual({ done: 1, possible: 1 });
+    expect(entryScore(H('trabalhar'), { ...e, timerStart: null }, now)).toEqual({ done: 0, possible: 1 });
   });
   it('Bíblia conta quando há capítulo marcado', () => {
     const m = map([{ date: '2026-10-12', habitId: 'leitura-biblia', chapters: [[43, 1]] }]);

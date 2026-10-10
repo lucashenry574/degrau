@@ -96,5 +96,5 @@ export const DEFAULT_HABITS: Habit[] = [
   { id: 'pregacao-domingo', area: 'espiritual', name: 'Pregação de domingo', hint: 'A presença conta ponto; as horas ficam no registro', kind: 'service', tone: 'pre', order: 90, schedules: [{ from, days: [6] }] },
   { id: 'academia', area: 'saude', name: 'Academia', kind: 'check', tone: 'saude', order: 110, schedules: [{ from, days: WEEKDAYS_MON_FRI }] },
   { id: 'pilates', area: 'saude', name: 'Pilates', kind: 'check', tone: 'saude', order: 120, schedules: [{ from, days: [0, 2, 4] }] },
-  { id: 'workana', area: 'trabalho', name: 'Workana', hint: '6 horas líquidas', kind: 'timer', tone: 'trab', order: 210, targetMinutes: 360, schedules: [{ from, days: WEEKDAYS_MON_FRI }] }
+  { id: 'trabalhar', area: 'trabalho', name: 'Trabalhar', hint: '6 horas líquidas, somando todos os projetos', kind: 'timer', tone: 'trab', order: 210, targetMinutes: 360, schedules: [{ from, days: WEEKDAYS_MON_FRI }] }
 ];

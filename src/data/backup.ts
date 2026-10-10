@@ -1,5 +1,5 @@
 import { todayISO } from '../domain/dates';
-import { db, getSetting, SCHEMA_VERSION, setSetting } from './db';
+import { applyHabitRenames, db, getSetting, SCHEMA_VERSION, setSetting } from './db';
 
 export interface BackupFile {
   app: 'degrau';
@@ -67,6 +67,8 @@ export async function restoreBackup(b: BackupFile): Promise<void> {
     await db.bibleReads.bulkPut(b.data.bibleReads as never[]);
     await db.notes.bulkPut(b.data.notes as never[]);
     await db.settings.bulkPut([...(b.data.settings as never[]), ...keep]);
+    // Backup feito antes de uma mudança de estrutura: aplica as mesmas conversões da atualização.
+    await applyHabitRenames(db.habits, db.entries);
   });
 }
 

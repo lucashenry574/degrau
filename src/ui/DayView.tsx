@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as act from '../data/actions';
 import { addDays, dayOfMonth, formatLong, MONTHS, mondayOf, WEEKDAYS_SHORT } from '../domain/dates';
-import { AREAS, entryId, EXTRA_SERVICE_ID, START_DATE, type Habit } from '../domain/habits';
+import { AREAS, entryId, EXTRA_SERVICE_ID, PLAN_WEEKS, START_DATE, type Habit } from '../domain/habits';
 import { dayScore, isScheduled, planWeek, weekScore, type EntryMap } from '../domain/scoring';
 import { Bar, hm, Stepper } from './bits';
 import { useBibleReads, useEntries, useNote, useNow } from './hooks';
@@ -28,7 +28,8 @@ export function DayView({ habits, today, date, onDate }: Props) {
   const lock = date > today;
   const beforeStart = today < START_DATE;
   const canPrev = addDays(mon, -7) >= mondayOf(START_DATE);
-  const canNext = addDays(mon, 7) <= mondayOf(today < START_DATE ? START_DATE : today);
+  // Semanas futuras abrem só para consulta (os itens ficam travados até o dia chegar).
+  const canNext = planWeek(addDays(mon, 7)) <= PLAN_WEEKS;
   const weekNo = planWeek(date);
 
   return (
